@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./app.css";
+import Header from "./Header";
+import Left from "./Left";
+import Right from "./Right";
+import { useState } from "react";
 
-function App() {
+const contacts = [
+  { name: "kibum", img: "http://placeimg.com/100/100/any" },
+  { name: "kibum2", img: "http://placeimg.com/100/100/any" },
+  { name: "kibum3", img: "http://placeimg.com/100/100/any" },
+  { name: "kibum4", img: "http://placeimg.com/100/100/any" },
+  { name: "kibum5", img: "http://placeimg.com/100/100/any" },
+];
+
+const App = () => {
+  const [selectedContact, setSelectedContact] = useState(null);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="__next">
+      <div className="container">
+        <Header />
+        <div className="contact-wrap">
+          <Left contacts={contacts} setSelectedContact={setSelectedContact} />
+          <Right selectedContact={selectedContact} setSelectedContact={setSelectedContact} />
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
